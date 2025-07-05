@@ -8,12 +8,69 @@ $message = '';
 $error = '';
 $edit_data = null;
 
-// Logika Form (Create, Update, Delete) - (Tidak ada perubahan di sini)
+// --- LOGIKA PHP LENGKAP UNTUK CREATE, UPDATE, DELETE ---
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // ... (kode PHP untuk CUD tetap sama) ...
+    $action = $_POST['action'] ?? '';
+
+    // Aksi Hapus
+    if ($action == 'delete') {
+        $id = intval($_POST['id']);
+        $sql = "DELETE FROM mata_praktikum WHERE id = ?";
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+        if ($stmt->execute()) {
+            $message = "Mata praktikum berhasil dihapus.";
+        } else {
+            $error = "Gagal menghapus mata praktikum.";
+        }
+        $stmt->close();
+    } 
+    // Aksi Tambah atau Update
+    else {
+        $nama_praktikum = trim($_POST['nama_praktikum']);
+        $deskripsi = trim($_POST['deskripsi']);
+        $id = intval($_POST['id'] ?? 0);
+
+        if (empty($nama_praktikum)) {
+            $error = "Nama praktikum tidak boleh kosong.";
+        } else {
+            // Logika UPDATE jika ada ID
+            if ($id > 0) {
+                $sql = "UPDATE mata_praktikum SET nama_praktikum = ?, deskripsi = ? WHERE id = ?";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("ssi", $nama_praktikum, $deskripsi, $id);
+                if ($stmt->execute()) {
+                    $message = "Data berhasil diperbarui.";
+                } else {
+                    $error = "Gagal memperbarui data.";
+                }
+            } 
+            // Logika INSERT jika tidak ada ID
+            else {
+                $sql = "INSERT INTO mata_praktikum (nama_praktikum, deskripsi) VALUES (?, ?)";
+                $stmt = $conn->prepare($sql);
+                $stmt->bind_param("ss", $nama_praktikum, $deskripsi);
+                if ($stmt->execute()) {
+                    $message = "Mata praktikum baru berhasil ditambahkan.";
+                } else {
+                    $error = "Gagal menambahkan data.";
+                }
+            }
+            $stmt->close();
+        }
+    }
 }
+
+// Logika untuk mengambil data yang akan di-edit
 if (isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['id'])) {
-    // ... (kode PHP untuk get edit data tetap sama) ...
+    $id = intval($_GET['id']);
+    $sql = "SELECT * FROM mata_praktikum WHERE id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $edit_data = $result->fetch_assoc();
+    $stmt->close();
 }
 ?>
 
@@ -29,7 +86,7 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['id'])) {
 <?php endif; ?>
 
 <div class="bg-white p-8 rounded-2xl shadow-md mb-8">
-    <h2 class="text-2xl font-extrabold text-slate-800 mb-6"><?php echo $edit_data ? '✏️ Edit Mata Praktikum' : 'Tambahkan Mata Praktikum Baru'; ?></h2>
+    <h2 class="text-2xl font-extrabold text-slate-800 mb-6"><?php echo $edit_data ? '✏️ Edit Mata Praktikum' : '✨ Tambah Mata Praktikum Baru'; ?></h2>
     <form action="kelola_praktikum.php" method="POST" class="space-y-6">
         <input type="hidden" name="id" value="<?php echo $edit_data['id'] ?? 0; ?>">
         <div>
@@ -90,6 +147,6 @@ if (isset($_GET['action']) && $_GET['action'] == 'edit' && isset($_GET['id'])) {
 </div>
 
 <?php
-if(isset($conn)) { $conn->close(); }
+$conn->close();
 require_once 'templates/footer.php';
 ?>
