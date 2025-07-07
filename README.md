@@ -41,3 +41,15 @@ Tampilan Edit Pengguna:
 Tampilan Hapus Pengguna:
 ![image](https://github.com/user-attachments/assets/5ccf570d-0ca6-42bd-b5a0-23773ac5c3a4)
 
+Tampilan Dashboard Mahasiswa
+![image](https://github.com/user-attachments/assets/a42a5648-abbb-4545-a612-8a91f5112067)
+
+Tampilan Katalog Mahasiswa
+![image](https://github.com/user-attachments/assets/c1e2ab32-c309-4f2d-b68f-84eb05c0840a)
+
+Tampilan Praktikum Saya
+![image](https://github.com/user-attachments/assets/94c7a742-42a8-46e5-bc6a-a6b875051222)
+
+Tampilan Detail Praktikum
+![image](https://github.com/user-attachments/assets/acce9d7b-cc3a-4901-9d04-2067f44666ed)
+![image](https://github.com/user-attachments/assets/b4f04102-7808-4636-bfd5-6e4bdab0a03f)
