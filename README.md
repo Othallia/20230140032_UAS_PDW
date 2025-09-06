@@ -17,6 +17,17 @@ Aplikasi ini memiliki dua hak akses dengan fitur yang berbeda, yaitu untuk mahas
 - Melihat dan mengunduh tugas yang dikumpulkan mahasiswa.
 - Memberikan dan menginput nilai tugas.
 
+🎥 Demo Singkat Aplikasi
+
+Panel Mahasiswa:
+https://github.com/user-attachments/assets/1fc4bb12-8c78-498c-94d3-2502328b2f3a
+
+
+Panel Asisten
+https://github.com/user-attachments/assets/f85a1b99-f30c-4c27-ab6d-5babc307be0f
+
+
+
 Berikut adalah tampilan web Simpraktikum
 Tampilan REGISTER:
 ![image](https://github.com/user-attachments/assets/4783e39e-20c4-48b9-9094-041c0d641206)
