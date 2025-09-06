@@ -1,4 +1,23 @@
+Proyek Website SIMPRAKTIKUM
+Simpraktikum adalah proyek Ujian Akhir Semester (UAS) untuk mata kuliah Pemrograman Dasar Web. Proyek ini merupakan aplikasi web e-learning yang dirancang untuk memfasilitasi kegiatan praktikum antara mahasiswa dan admin/dosen.
 
+✨ Fitur Utama
+Aplikasi ini memiliki dua hak akses dengan fitur yang berbeda, yaitu untuk mahasiswa dan dosen.
+👤 Fitur untuk Mahasiswa
+- Login ke sistem.
+- Melihat daftar mata kuliah praktikum yang tersedia.
+- Mengunduh materi praktikum.
+- Mengunggah (upload) tugas atau laporan praktikum.
+- Melihat nilai.
+
+👑 Fitur untuk Admin/Dosen
+- Login ke sistem.
+- Mengelola data mahasiswa.
+- Mengunggah dan mengelola materi praktikum untuk setiap mata kuliah.
+- Melihat dan mengunduh tugas yang dikumpulkan mahasiswa.
+- Memberikan dan menginput nilai tugas.
+
+Berikut adalah tampilan web Simpraktikum
 Tampilan REGISTER:
 ![image](https://github.com/user-attachments/assets/4783e39e-20c4-48b9-9094-041c0d641206)
 
